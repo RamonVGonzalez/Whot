@@ -68,6 +68,17 @@ namespace Whot
                     Console.WriteLine(Constants.shareGameMessage, gameManager.ChooseShuffler().GetNickname());
 
                     Console.Write(Constants.numberOfCardsToShareMessage);
+
+                    bool validInput = false;
+
+                    while (!validInput)
+                    {
+                        if (int.TryParse(Console.ReadLine().ToLower(), out numberOfCardsToShare))
+                        {
+                            validInput = true;
+                        }
+                    }
+
                     numberOfCardsToShare = int.Parse(Console.ReadLine().ToLower());
                  
                     int marketSizeOption = 0;
@@ -139,7 +150,18 @@ namespace Whot
                             Console.WriteLine(Constants.displayCardsMessage, i + 1, humanPlayer.GetCards()[i]);
                         }
                         Console.WriteLine(Constants.inGameMessage);
-                        int player1CardPositionToPlay = int.Parse(Console.ReadLine());
+
+                        bool validInput = false;
+                        int player1CardPositionToPlay = 0;
+
+                        while (!validInput)
+                        {
+                            if (int.TryParse(Console.ReadLine().ToLower(), out player1CardPositionToPlay))
+                            {
+                                validInput = true;
+                            }
+                        }
+
                         if (player1CardPositionToPlay == 0)
                         {
                             humanPlayer.GoMarket();
